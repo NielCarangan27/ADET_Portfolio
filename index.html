@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport tag for responsive layout on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio of Niel Joseph R. Carangan, a Web and Mobile Applications Development student at Bulacan State University.">
+    <title>Niel Joseph R. Carangan | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts: Bricolage Grotesque for headings, DM Sans for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header and navigation -->
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- Portfolio branding -->
+            <a class="brand" href="#about">Niel Joseph Carangan</a>
+            <!-- Anchor links to each section -->
+            <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <!-- Dark/light mode toggle -->
+                <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+                    <span class="theme-icon" id="theme-icon" aria-hidden="true">☾</span>
+                </button>
+                <!-- Hamburger button, visible on mobile only -->
+                <button class="icon-button menu-button" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero and About Me section -->
+        <section class="hero" id="about">
+            <div class="hero-text">
+                <p class="hero-role">Quality Assurance</p>
+                <h1 class="hero-name">Niel Joseph R. Carangan</h1>
+                <p class="hero-intro">Greetings! i am Niel Joseph Carangan, a student in Bulacan State University.</p>
+                <div class="hero-buttons">
+                    <a class="button button-primary" href="#projects">See my projects</a>
+                    <a class="button button-secondary" href="#contact">Get in touch</a>
+                </div>
+            </div>
+            <!-- Profile photo -->
+            <figure class="hero-photo">
+                <img src="images/profile.png" alt="Portrait of Niel Joseph R. Carangan" width="400" height="500">
+            </figure>
+            <!-- Short bio and skills -->
+            <div class="bio">
+                <h2 class="section-title">About me</h2>
+                <p>I am a student in Bulacan State University, under College of Information and Communications Technology specializing in Web and Mobile Applications Development.</p>
+                <ul class="skill-list" aria-label="Skills">
+                    <li>Systems Analysis</li>
+                    <li>Manual Testing</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section class="projects" id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <!-- Project cards: title, description, technologies, and link -->
+                <article class="project-card">
+                    <h3 class="project-title">TUKLAS</h3>
+                    <p class="project-description">A Lost and Found System developed as the final project of Web Systems and Technologies</p>
+                    <p class="project-tags">HTML, CSS, JavaScript, PHP</p>
+                </article>
+                <article class="project-card">
+                    <h3 class="project-title">InnSync</h3>
+                    <p class="project-description">A front-end prototype for the final project of Platform Technologies.</p>
+                    <p class="project-tags">Figma, Front-end, User Interaction</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer and contact details -->
+    <footer class="site-footer" id="contact">
+        <div class="footer-inner">
+            <!-- Email, GitHub, and social media links -->
+            <ul class="contact-list">
+                <li><span class="contact-label">Email</span><a href="mailto:nielcarangan02@gmail.com">nielcarangan02@gmail.com</a></li>
+                <li><span class="contact-label">GitHub</span><a href="https://github.com/NielCarangan27" target="_blank" rel="noopener">NielCarangan27</a></li>
+                <li><span class="contact-label">Facebook</span><a href="https://www.facebook.com/nenzakkaii" target="_blank" rel="noopener">facebook.com/nenzakkaii</a></li>
+            </ul>
+        </div>
+        <p class="copyright">&copy; <span id="year"></span> Niel Joseph Carangan</p>
+    </footer>
+
+    <!-- Interactive features: mobile menu and theme toggle -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+/* Design tokens: light theme colors, spacing, and fonts */
+:root {
+    --bg: #f2f5f7;
+    --surface: #ffffff;
+    --text: #15202b;
+    --muted: #55616d;
+    --accent: #1f4fd8;
+    --accent-text: #ffffff;
+    --border: #d5dde4;
+    --header-height: 4.5rem;
+    --font-display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+    --font-body: "DM Sans", "Segoe UI", sans-serif;
+}
+
+/* Dark theme colors, applied when script.js sets data-theme to dark */
+:root[data-theme="dark"] {
+    --bg: #0e151c;
+    --surface: #17212b;
+    --text: #e8eef4;
+    --muted: #9aa8b5;
+    --accent: #7cacff;
+    --accent-text: #0e151c;
+    --border: #2a3744;
+}
+
+/* Base reset and global element styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling for anchor links, offset by the sticky header height */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+/* Visible outline for keyboard navigation */
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Header and navigation */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: var(--header-height);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    max-width: 72rem;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.brand {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.site-nav {
+    margin-left: auto;
+}
+
+/* Navigation links (desktop layout) */
+.nav-list {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-list a {
+    padding: 0.4rem 0;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-list a:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Round buttons for the theme toggle and hamburger menu */
+.icon-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.icon-button:hover {
+    background: var(--surface);
+    border-color: var(--accent);
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Hamburger menu button, hidden on desktop */
+.menu-button {
+    display: none;
+}
+
+.menu-bar {
+    width: 1.1rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button[aria-expanded="true"] .menu-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Main content wrapper */
+main {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Hero and About Me layout using CSS Grid */
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-areas:
+        "text photo"
+        "bio photo";
+    column-gap: 4rem;
+    row-gap: 3rem;
+    align-items: start;
+    padding: 5rem 0 6rem;
+}
+
+.hero-text {
+    grid-area: text;
+}
+
+.hero-role {
+    margin: 0 0 1rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.hero-name {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+}
+
+.hero-intro {
+    max-width: 34rem;
+    margin: 0 0 2rem;
+    font-size: 1.25rem;
+    color: var(--muted);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Call-to-action buttons with hover effects */
+.button {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--accent);
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    color: var(--accent-text);
+    background: var(--accent);
+}
+
+.button-secondary {
+    color: var(--accent);
+    background: transparent;
+}
+
+.button-secondary:hover {
+    color: var(--accent-text);
+    background: var(--accent);
+}
+
+/* Profile photo */
+.hero-photo {
+    grid-area: photo;
+    margin: 0;
+}
+
+.hero-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem 1.5rem 1.5rem 0.25rem;
+}
+
+/* Bio text and skill tags */
+.bio {
+    grid-area: bio;
+    max-width: 40rem;
+}
+
+.bio p {
+    margin: 0 0 1rem;
+}
+
+.section-title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill-list li {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+}
+
+/* Projects section and card grid */
+.projects {
+    padding: 0 0 6rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1.5rem;
+}
+
+/* Project card with hover effect */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.project-title {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.project-description {
+    margin: 0 0 1rem;
+    color: var(--muted);
+}
+
+.project-tags {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.project-link {
+    margin-top: auto;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.project-link:hover {
+    text-decoration-thickness: 3px;
+}
+
+/* Footer and contact section */
+.site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+}
+
+.footer-intro {
+    flex: 1 1 18rem;
+    max-width: 28rem;
+}
+
+.footer-intro p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* Contact details list */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 18rem;
+    gap: 1.1rem;
+    max-width: 28rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1.5rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-label {
+    flex: 0 0 5.5rem;
+    font-weight: 700;
+}
+
+.contact-list a {
+    overflow-wrap: anywhere;
+    text-underline-offset: 4px;
+}
+
+.contact-list a:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* Tablet and mobile: show the hamburger menu and stack the hero into one column */
+@media (max-width: 52rem) {
+    .menu-button {
+        display: inline-flex;
+    }
+
+    .site-nav {
+        position: absolute;
+        top: var(--header-height);
+        right: 0;
+        left: 0;
+        display: none;
+        padding: 0.5rem 1.5rem 1.5rem;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .site-nav.is-open {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .nav-list a {
+        display: block;
+        padding: 0.8rem 0;
+        font-size: 1.15rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "text"
+            "photo"
+            "bio";
+        row-gap: 2.5rem;
+        padding: 3rem 0 4rem;
+    }
+
+    .hero-photo {
+        max-width: 22rem;
+    }
+}
+
+/* Small phones: tighter spacing and full-width buttons */
+@media (max-width: 30rem) {
+    .header-inner,
+    main,
+    .footer-inner,
+    .copyright {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .site-nav {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-buttons .button {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .contact-label {
+        flex-basis: 100%;
+    }
+}
+
+/* Turn off animations for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
